@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="fibonacci-sequence">Fibonacci Sequence</h1>
+<h2 id="section"><img src="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRP5VHvglI8NXAt2RWH3Q2fxztPEOzs-w1ZETJQPZzwKyZLYj6ykVQStLJ7uwxnbaiV" alt="Fibonacci's Photo" title="Fibonacci"></h2>
+<p><strong>What is Fibonacci series?</strong><br>
+The <em>Fibonacci</em> Sequence is the series of numbers :<br>
+<strong>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, …</strong></p>
+<p>The next number is found by adding up the two numbers before it :</p>
+<ul>
+<li>the 2 is found by adding the two numbers before it (1+1),</li>
+<li>the 3 is found by adding the two numbers before it (1+2),</li>
+<li>the 5 is (2+3),</li>
+<li>and so on!</li>
+</ul>
+<p>for more details : <a href="https://en.wikipedia.org/wiki/Fibonacci_number"><em>Fibonacci number</em></a></p>
+<h2 id="solutions-">Solutions :</h2>
+<ol>
+<li><strong>Recursion :</strong></li>
+</ol>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h&gt;</span></span>
+using namespace std<span class="token punctuation">;</span>  
+  
+<span class="token keyword">int</span> <span class="token function">fib</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span>  
+        <span class="token keyword">return</span> n<span class="token punctuation">;</span>  
+ <span class="token keyword">return</span> <span class="token function">fib</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">fib</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>  
+  
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>  
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>cin<span class="token operator">&gt;&gt;</span>n<span class="token punctuation">;</span>  
+  cout <span class="token operator">&lt;&lt;</span> <span class="token function">fib</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+ <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+<ol start="2">
+<li><strong>Binet’s formula :</strong><br>
+<em>This Formula gives correct result only up to n&lt;71.</em></li>
+</ol>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h&gt;</span></span>
+using namespace std<span class="token punctuation">;</span>
+
+  <span class="token keyword">int</span> <span class="token function">fib</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> 
+  <span class="token punctuation">{</span>  
+ <span class="token keyword">double</span> phi <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>  
+ <span class="token keyword">return</span> <span class="token function">round</span><span class="token punctuation">(</span><span class="token function">pow</span><span class="token punctuation">(</span>phi<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>  
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>  
+ <span class="token keyword">int</span> n<span class="token punctuation">;</span>cin<span class="token operator">&gt;&gt;</span>n<span class="token punctuation">;</span> 
+ cout <span class="token operator">&lt;&lt;</span> <span class="token function">fib</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>  
+ <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+<ol start="3">
+<li><strong>Dynamic Programming :</strong></li>
+</ol>
+<pre class=" language-c"><code class="prism ++ language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h&gt;</span>  </span>
+using namespace std<span class="token punctuation">;</span>  
+  
+class GFG<span class="token punctuation">{</span>  
+public<span class="token punctuation">:</span>  
+    <span class="token keyword">int</span> <span class="token function">fib</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span>  
+    <span class="token punctuation">{</span>  
+        <span class="token keyword">int</span> f<span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+ <span class="token keyword">int</span> i<span class="token punctuation">;</span>  
+  f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+  f<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  
+ <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">{</span>  
+            f<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> f<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span>  
+        <span class="token keyword">return</span> f<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span><span class="token punctuation">;</span>  
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>  
+    GFG g<span class="token punctuation">;</span>  
+ <span class="token keyword">int</span> n<span class="token punctuation">;</span>cin<span class="token operator">&gt;&gt;</span>n<span class="token punctuation">;</span>  
+  
+  cout <span class="token operator">&lt;&lt;</span> g<span class="token punctuation">.</span><span class="token function">fib</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+ <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="comparison-between-methods-">Comparison between methods :</h2>
+
+<table>
+<thead>
+<tr>
+<th>METHOD</th>
+<th align="center">TIME COMPLEXITY</th>
+<th align="center">SPACE COMPLEXITY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recursion</td>
+<td align="center">O(2^n)</td>
+<td align="center">O(n)</td>
+</tr>
+<tr>
+<td>Binet’s formula</td>
+<td align="center">O(logn)</td>
+<td align="center">O(1)</td>
+</tr>
+<tr>
+<td>Dynamic Programming</td>
+<td align="center">O(n)</td>
+<td align="center">O(1)</td>
+</tr>
+</tbody>
+</table><hr>
+</div>
+</body>
+
+</html>
